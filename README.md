@@ -33,6 +33,19 @@ Este projeto consiste no desenvolvimento de três programas que abordam conceito
 * Implementação obrigatória do **Crivo de Eratóstenes**
 * Exibição do **passo a passo** do processo de filtragem dos números
 
+## 🛠️ Como Iniciar o Programa
+
+### 1. Preparando o ambiente C# (Crivo)
+No diretório onde está o arquivo "Crivo de Eratóstenes.cs", execute no terminal:
+dotnet new console --force
+
+### 2. Iniciando o servidor Flask (Backend)
+No terminal, execute:
+python app.py
+
+### 3. Abrindo a Interface (Frontend)
+Abra o arquivo "index.html" no seu navegador.
+
 ## ⚙️ Requisitos do Projeto
 
 * Linguagem de programação livre
@@ -41,9 +54,9 @@ Este projeto consiste no desenvolvimento de três programas que abordam conceito
 
 ## 👥 Organização
 
-* Trabalho em grupo de até 3 pessoas
-* Apresentação obrigatória do funcionamento dos programas
-* Ordem de apresentação definida por sorteio
+* Arthur Candido
+* Caua de Moraes
+* Mateus Soier
 
 ## 🎯 Objetivo
 

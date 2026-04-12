@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemática Discreta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-container">
+    <header>
+        <h1>Matemática Discreta</h1>
+        <p>Arthur Candido, Caua de Moraes, Mateus Soier</p>
+    </header>
+
+    <div class="projects-wrapper">
+        <section class="card">
+            <div class="card-header">
+                <div class="icon">MDC</div>
+                <h2>Euclides Estendido</h2>
+            </div>
+            <div class="input-group">
+                <input type="number" id="numA" placeholder="Valor A">
+                <input type="number" id="numB" placeholder="Valor B">
+                <button onclick="executarEuclides()">Calcular</button>
+            </div>
+            <div id="resEuclides" class="result-box hidden"></div>
+            <div id="stepEuclides" class="step-box hidden" style="white-space: pre-wrap;"></div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <div class="icon">CE</div>
+                <h2>Crivo de Eratóstenes</h2>
+            </div>
+            <div class="input-group">
+                <input type="number" id="limiteCrivo" placeholder="Limite n">
+                <button onclick="executarCrivo()">Filtrar Primos</button>
+            </div>
+            <div id="resCrivo" class="result-box hidden"></div>
+            <div id="stepCrivo" class="step-box hidden" style="white-space: pre-wrap;"></div>
+        </section>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
