@@ -1,62 +1,95 @@
-// URL onde o servidor Flask está rodando
-const API_URL = "http://127.0.0.1:5000";
-
-// Função para processar o MDC Estendido
-async function executarEuclides() {
-    const a = document.getElementById('numA').value;
-    const b = document.getElementById('numB').value;
-    const resBox = document.getElementById('resEuclides');
-    const stepBox = document.getElementById('stepEuclides');
-
-    // Envia os números para a rota /euclides do Python
-    const response = await fetch(`${API_URL}/euclides`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ a, b })
-    });
-
-    const result = await response.json();
+async function calcularEuclides() {
+    const a = document.getElementById('valorA').value;
+    const b = document.getElementById('valorB').value;
     
-    // Torna visíveis as caixas de resultado e passos
-    resBox.classList.remove('hidden');
-    stepBox.classList.remove('hidden');
-    
-    // Exibe o MDC e a fórmula da combinação linear
-    resBox.innerHTML = `<strong>MDC:</strong> ${result.mdc}<br><small>${result.mdc} = (${result.s})*(${a}) + (${result.t})*(${b})</small>`;
-    // Exibe o passo a passo textual
-    stepBox.innerText = result.passos;
-}
+    const resBox = document.getElementById('resultadoEuclides');
+    const passosBox = document.getElementById('passosEuclides');
 
-// Função para processar o Crivo de Eratóstenes
-async function executarCrivo() {
-    const limite = document.getElementById('limiteCrivo').value;
-    const resBox = document.getElementById('resCrivo');
-    const stepBox = document.getElementById('stepCrivo');
-
-    // Reseta a visibilidade antes de uma nova consulta
-    resBox.classList.add('hidden');
-    stepBox.classList.add('hidden');
+    if(!a || !b) return alert("Preencha os valores A e B");
 
     try {
-        const response = await fetch(`${API_URL}/crivo`, {
+        const res = await fetch('http://127.0.0.1:5000/api/euclides', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ limite: parseInt(limite) })
+            body: JSON.stringify({ a: parseInt(a), b: parseInt(b) })
         });
-
-        const data = await response.json();
+        
+        const data = await res.json();
+        
+        resBox.innerHTML = `<strong>MDC: ${data.mdc}</strong><br>${data.equacao}`;
         resBox.classList.remove('hidden');
-        stepBox.classList.remove('hidden');
 
-        if (response.ok) {
-            // Exibe a lista final de primos
-            resBox.innerHTML = `<strong>Primos encontrados:</strong> ${data.resultado_bruto}`;
-            // Exibe a narração de remoção vinda do C#
-            stepBox.innerText = data.passos;
-        } else {
-            resBox.innerHTML = `<strong>Erro:</strong> ${data.error}`;
+        passosBox.innerHTML = data.passos;
+        passosBox.classList.remove('hidden');
+    } catch (err) {
+        alert("Erro ao conectar com o servidor. Verifique se o Back-end está rodando.");
+    }
+}
+
+async function calcularCrivo() {
+    const n = document.getElementById('limiteN').value;
+    const resBox = document.getElementById('resultadoCrivo');
+    const passosBox = document.getElementById('passosCrivo');
+
+    if(!n) return alert("Preencha o limite n");
+
+    try {
+        const res = await fetch('http://127.0.0.1:5000/api/crivo', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ n: parseInt(n) })
+        });
+        
+        const data = await res.json();
+        
+        if(data.error) throw new Error(data.error);
+
+        resBox.innerHTML = `<strong>Primos encontrados:</strong> ${data.primos.join(', ')}`;
+        resBox.classList.remove('hidden');
+
+        passosBox.innerHTML = data.passos;
+        passosBox.classList.remove('hidden');
+    } catch (err) {
+        alert("Erro no Crivo: " + err.message);
+    }
+}
+
+async function calcularBases() {
+    const numero = document.getElementById('numeroBase').value;
+    const baseOrigem = document.getElementById('baseOrigem').value;
+    const baseDestino = document.getElementById('baseDestino').value;
+    
+    const resBox = document.getElementById('resultadoBases');
+    const passosBox = document.getElementById('passosBases');
+
+    if(!numero || !baseOrigem || !baseDestino) return alert("Preencha todos os campos");
+
+    try {
+        const res = await fetch('http://127.0.0.1:5000/api/bases', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                numero: numero, 
+                base_origem: parseInt(baseOrigem), 
+                base_destino: parseInt(baseDestino) 
+            })
+        });
+        
+        const data = await res.json();
+        
+        if(data.error) {
+            alert(data.error);
+            return;
+        }
+
+        resBox.innerHTML = `<strong>Resultado:</strong> ${data.resultado}`;
+        resBox.classList.remove('hidden');
+
+        if (data.passos) {
+            passosBox.innerHTML = data.passos;
+            passosBox.classList.remove('hidden');
         }
     } catch (err) {
-        alert("Erro ao conectar ao servidor Flask. Verifique se o app.py está rodando.");
+        alert("Erro na conversão de bases.");
     }
 }

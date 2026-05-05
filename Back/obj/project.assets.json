@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mateus\\Downloads\\Pratica_Matematica_Discreta-main\\Back\\Back.csproj",
+      "projectUniqueName": "C:\\Users\\Mateus\\Documents\\Projetos\\Pratica_Matematica_Discreta\\Back\\Back.csproj",
       "projectName": "Back",
-      "projectPath": "C:\\Users\\Mateus\\Downloads\\Pratica_Matematica_Discreta-main\\Back\\Back.csproj",
+      "projectPath": "C:\\Users\\Mateus\\Documents\\Projetos\\Pratica_Matematica_Discreta\\Back\\Back.csproj",
       "packagesPath": "C:\\Users\\Mateus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mateus\\Downloads\\Pratica_Matematica_Discreta-main\\Back\\obj\\",
+      "outputPath": "C:\\Users\\Mateus\\Documents\\Projetos\\Pratica_Matematica_Discreta\\Back\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mateus\\AppData\\Roaming\\NuGet\\NuGet.Config"

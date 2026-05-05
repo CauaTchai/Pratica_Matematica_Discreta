@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +7,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="main-container">
     <header>
         <h1>Matemática Discreta</h1>
-        <p>Arthur Candido, Caua de Moraes, Mateus Soier</p>
+        <p>Arthur Candido, Caua de Morais e Mateus Soier</p>
     </header>
 
-    <div class="projects-wrapper">
-        <section class="card">
+    <main class="container">
+        <!-- Euclides Estendido -->
+        <div class="card">
             <div class="card-header">
-                <div class="icon">MDC</div>
+                <span class="badge">MDC</span>
                 <h2>Euclides Estendido</h2>
             </div>
             <div class="input-group">
-                <input type="number" id="numA" placeholder="Valor A">
-                <input type="number" id="numB" placeholder="Valor B">
-                <button onclick="executarEuclides()">Calcular</button>
+                <input type="number" id="valorA" placeholder="Valor A">
+                <input type="number" id="valorB" placeholder="Valor B">
+                <button onclick="calcularEuclides()">Calcular</button>
             </div>
-            <div id="resEuclides" class="result-box hidden"></div>
-            <div id="stepEuclides" class="step-box hidden" style="white-space: pre-wrap;"></div>
-        </section>
+            <div id="resultadoEuclides" class="resultado-box hidden"></div>
+            <div id="passosEuclides" class="passos-box hidden"></div>
+        </div>
 
-        <section class="card">
+        <!-- Crivo de Eratóstenes -->
+        <div class="card">
             <div class="card-header">
-                <div class="icon">CE</div>
+                <span class="badge">CE</span>
                 <h2>Crivo de Eratóstenes</h2>
             </div>
             <div class="input-group">
-                <input type="number" id="limiteCrivo" placeholder="Limite n">
-                <button onclick="executarCrivo()">Filtrar Primos</button>
+                <input type="number" id="limiteN" placeholder="Limite n">
+                <button onclick="calcularCrivo()">Filtrar Primos</button>
             </div>
-            <div id="resCrivo" class="result-box hidden"></div>
-            <div id="stepCrivo" class="step-box hidden" style="white-space: pre-wrap;"></div>
-        </section>
-    </div>
-</div>
+            <div id="resultadoCrivo" class="resultado-box hidden"></div>
+            <div id="passosCrivo" class="passos-box hidden"></div>
+        </div>
 
-<script src="script.js"></script>
+        <!-- Calculadora de Bases -->
+        <div class="card">
+            <div class="card-header">
+                <span class="badge">CB</span>
+                <h2>Calculadora de Bases</h2>
+            </div>
+            <div class="input-group">
+                <input type="text" id="numeroBase" placeholder="Número">
+                <input type="number" id="baseOrigem" placeholder="Base Origem">
+                <input type="number" id="baseDestino" placeholder="Base Destino">
+                <button onclick="calcularBases()">Calcular</button>
+            </div>
+            <div id="resultadoBases" class="resultado-box hidden"></div>
+            <div id="passosBases" class="passos-box hidden"></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
