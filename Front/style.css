@@ -2,17 +2,15 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
     background-color: #f0f2f5;
-    color: #333;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem;
-    min-height: 100vh;
 }
 
 header {
@@ -21,14 +19,7 @@ header {
 }
 
 header h1 {
-    font-size: 2.5rem;
     color: #1a73e8;
-    margin-bottom: 0.5rem;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: #5f6368;
 }
 
 .container {
@@ -36,47 +27,27 @@ header p {
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
-    max-width: 1400px;
     width: 100%;
+    max-width: 1400px;
 }
 
 .card {
-    background-color: #fff;
+    background: #fff;
     border-radius: 12px;
     padding: 2rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    border-bottom: 2px solid #f1f3f4;
-    padding-bottom: 1rem;
+    gap: 1rem;
 }
 
 .badge {
-    background-color: #1a73e8;
+    background: #1a73e8;
     color: #fff;
     padding: 0.3rem 0.7rem;
     border-radius: 6px;
     font-weight: bold;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
-.card-header h2 {
-    font-size: 1.4rem;
-    color: #202124;
 }
 
 .input-group {
@@ -85,83 +56,48 @@ header p {
     gap: 0.8rem;
 }
 
-.input-group input {
-    width: 100%;
+input,
+select {
     padding: 0.75rem;
     border: 1.5px solid #dadce0;
     border-radius: 8px;
     font-size: 1rem;
-    outline: none;
-    transition: border-color 0.2s;
 }
 
-.input-group input:focus {
-    border-color: #1a73e8;
-}
-
-.input-group button {
+button {
     padding: 0.8rem;
-    background-color: #1a73e8;
+    background: #1a73e8;
     color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.2s;
-    margin-top: 0.5rem;
 }
-
-.input-group button:hover {
-    background-color: #1557b0;
-}
-
-/* Alterações solicitadas: Caixas de resultado e passos mais compridas */
 
 .resultado-box {
-    background-color: #e8f0fe;
+    background: #e8f0fe;
     padding: 1.2rem;
     border-radius: 8px;
     color: #1967d2;
     font-size: 1rem;
     word-break: break-word;
     border-left: 4px solid #1a73e8;
-    min-height: 80px; /* Garante que a caixa tenha uma altura mínima maior */
+    margin-top: 1rem;
 }
 
 .passos-box {
-    background-color: #f8f9fa;
+    background: #f8f9fa;
     padding: 1.2rem;
     border-radius: 8px;
     border: 1px solid #dadce0;
-    font-size: 0.9rem;
-    
-    /* Aumento do comprimento (altura) */
-    min-height: 250px; 
-    max-height: 450px; 
-    
+    min-height: 200px;
+    max-height: 400px;
     overflow-y: auto;
     white-space: pre-wrap;
-    color: #3c4043;
-    line-height: 1.5;
-    font-family: 'Courier New', Courier, monospace; /* Melhor para passos matemáticos */
+    font-family: monospace;
+    margin-top: 1rem;
 }
 
 .hidden {
     display: none;
-}
-
-/* Custom scrollbar para as caixas de passos */
-.passos-box::-webkit-scrollbar {
-    width: 8px;
-}
-.passos-box::-webkit-scrollbar-track {
-    background: #f1f3f4;
-}
-.passos-box::-webkit-scrollbar-thumb {
-    background: #dadce0;
-    border-radius: 4px;
-}
-.passos-box::-webkit-scrollbar-thumb:hover {
-    background: #bdc1c6;
 }

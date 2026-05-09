@@ -48,17 +48,53 @@
                 <span class="badge">CB</span>
                 <h2>Calculadora de Bases</h2>
             </div>
-            <div class="input-group">
-                <input type="text" id="numeroBase" placeholder="Número">
-                <input type="number" id="baseOrigem" placeholder="Base Origem">
-                <input type="number" id="baseDestino" placeholder="Base Destino">
+            
+            <!-- Seleção do Modo -->
+            <div class="input-group" style="flex-direction: row; justify-content: center; margin-bottom: 1rem; gap: 1rem;">
+                <label><input type="radio" name="modoCB" value="conversao" checked onchange="toggleModoCB()"> Conversão</label>
+                <label><input type="radio" name="modoCB" value="operacao" onchange="toggleModoCB()"> Operação</label>
+            </div>
+
+            <!-- Bloco de Conversão -->
+            <div id="blocoConversao" class="input-group">
+                <input type="text" id="numConv" placeholder="Número">
+                <label>Base Origem:</label>
+                <select id="baseOrigem">
+                    <option value="10">Decimal (10)</option>
+                    <option value="2">Binária (2)</option>
+                    <option value="16">Hexadecimal (16)</option>
+                </select>
+                <label>Base Destino:</label>
+                <select id="baseDestino">
+                    <option value="10">Decimal (10)</option>
+                    <option value="2">Binária (2)</option>
+                    <option value="16">Hexadecimal (16)</option>
+                </select>
+                <button onclick="calcularBases()">Converter</button>
+            </div>
+
+            <!-- Bloco de Operações -->
+            <div id="blocoOperacao" class="input-group hidden">
+                <label>Selecione a Base:</label>
+                <select id="baseOpSel">
+                    <option value="10">Decimal (10)</option>
+                    <option value="2">Binária (2)</option>
+                    <option value="16">Hexadecimal (16)</option>
+                </select>
+                <input type="text" id="val1" placeholder="Valor 1">
+                <select id="opSel">
+                    <option value="+">Soma (+)</option>
+                    <option value="-">Subtração (-)</option>
+                    <option value="*">Multiplicação (*)</option>
+                </select>
+                <input type="text" id="val2" placeholder="Valor 2">
                 <button onclick="calcularBases()">Calcular</button>
             </div>
+
             <div id="resultadoBases" class="resultado-box hidden"></div>
             <div id="passosBases" class="passos-box hidden"></div>
         </div>
     </main>
-
     <script src="script.js"></script>
 </body>
 </html>
