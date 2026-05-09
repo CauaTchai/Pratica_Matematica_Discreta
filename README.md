@@ -16,24 +16,33 @@ Este projeto é uma aplicação Full-Stack que visualiza algoritmos fundamentais
 ## 🚀 Como Executar o Projeto
 
 ### 1. Configurar o Backend (Python)
-Certifique-se de ter o Python instalado. No terminal, dentro da pasta `Back`:
-pip install flask flask-cors
-python app.py
+* Certifique-se de ter o Python instalado. 
+* No terminal, dentro da pasta `Back` execute os comandos:
+* pip install flask flask-cors
+* python app.py
 
-O servidor iniciará em: http://127.0.0.1:5000
+#### O servidor iniciará em: http://127.0.0.1:5000
 
-2. Configurar o C# (Crivo)
-Dentro da pasta Back, prepare o ambiente para o algoritmo de Eratóstenes:
-dotnet new console --force
+### 2. Configurar o C# (Crivo)
+* Dentro da pasta Back, prepare o ambiente para o algoritmo de Eratóstenes:
+* dotnet new console --force
 
-# Você pode apagar o arquivo Program.cs criado automaticamente pelo comando acima.
+#### Você pode apagar o arquivo Program.cs criado automaticamente pelo comando acima.
+  
+### 3. Abrir o Site
+* Basta abrir o arquivo index.html usando a extensão Live Server do VS Code.
 
-3. Abrir o Site
-Basta abrir o arquivo index.html usando a extensão Live Server do VS Code.
+## 📖 Funcionalidades
+### 1. Euclides Estendido
+* Calcula o MDC de dois números.
+* Mostra a combinação linear (coeficientes $s$ e $t$).
+* Exibe o passo a passo das divisões.
 
-📖 Funcionalidades
-1. Euclides EstendidoCalcula o MDC de dois números.Mostra a combinação linear (coeficientes $s$ e $t$).Exibe o passo a passo das divisões.
+### 2. Crivo de Eratóstenes
+* Encontra todos os primos até um limite $n$.
+* Executado via C# para alta performance.
+#### Mostra o processo de "riscar" os múltiplos em tempo real.
 
-2. Crivo de EratóstenesEncontra todos os primos até um limite $n$.Executado via C# para alta performance.Mostra o processo de "riscar" os múltiplos em tempo real.
-
-3. Calculadora de BasesConversão: Entre Decimal, Binário e Hexadecimal com detalhamento matemático.Operações: Soma, Subtração e Multiplicação diretamente na base escolhida.
+### 3. Calculadora de Bases
+#### Conversão: Entre Decimal, Binário e Hexadecimal com detalhamento matemático.
+#### Operações: Soma, Subtração e Multiplicação diretamente na base escolhida.
