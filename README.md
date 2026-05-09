@@ -41,8 +41,8 @@ Este projeto é uma aplicação Full-Stack que visualiza algoritmos fundamentais
 ### 2. Crivo de Eratóstenes
 * Encontra todos os primos até um limite $n$.
 * Executado via C# para alta performance.
-#### Mostra o processo de "riscar" os múltiplos em tempo real.
+* Mostra o processo de "riscar" os múltiplos em tempo real.
 
 ### 3. Calculadora de Bases
-#### Conversão: Entre Decimal, Binário e Hexadecimal com detalhamento matemático.
-#### Operações: Soma, Subtração e Multiplicação diretamente na base escolhida.
+* Conversão: Entre Decimal, Binário e Hexadecimal com detalhamento matemático.
+* Operações: Soma, Subtração e Multiplicação diretamente na base escolhida.
