@@ -1,10 +1,16 @@
+// Função auxiliar para garantir que o número é inteiro e positivo
+function validarPositivo(valor) {
+    const n = parseInt(valor);
+    return !isNaN(n) && n >= 0;
+}
+
 async function calcularEuclides() {
     const a = document.getElementById('valorA').value;
     const b = document.getElementById('valorB').value;
     const resBox = document.getElementById('resultadoEuclides');
     const passosBox = document.getElementById('passosEuclides');
 
-    if(!a || !b) return alert("Preencha os valores A e B");
+    if(!validarPositivo(a) || !validarPositivo(b)) return alert("Por favor, insira números inteiros positivos.");
 
     try {
         const res = await fetch('http://127.0.0.1:5000/api/euclides', {
@@ -17,7 +23,7 @@ async function calcularEuclides() {
         resBox.classList.remove('hidden');
         passosBox.innerHTML = data.passos;
         passosBox.classList.remove('hidden');
-    } catch (err) { alert("Erro no servidor."); }
+    } catch (err) { alert("Erro ao conectar com o servidor."); }
 }
 
 async function calcularCrivo() {
@@ -25,7 +31,7 @@ async function calcularCrivo() {
     const resBox = document.getElementById('resultadoCrivo');
     const passosBox = document.getElementById('passosCrivo');
 
-    if(!n) return alert("Preencha o limite n");
+    if(!validarPositivo(n) || n < 2) return alert("Insira um limite maior ou igual a 2.");
 
     try {
         const res = await fetch('http://127.0.0.1:5000/api/crivo', {
@@ -34,45 +40,27 @@ async function calcularCrivo() {
             body: JSON.stringify({ n: parseInt(n) })
         });
         const data = await res.json();
-        resBox.innerHTML = `<strong>Primos:</strong> ${data.primos.join(', ')}`;
+        resBox.innerHTML = `<strong>Primos encontrados:</strong><br>${data.primos.join(', ')}`;
         resBox.classList.remove('hidden');
         passosBox.innerHTML = data.passos;
         passosBox.classList.remove('hidden');
-    } catch (err) { alert("Erro no Crivo."); }
+    } catch (err) { alert("Erro ao calcular o Crivo."); }
 }
 
-// Controla a troca de tela entre conversão e operação
 function toggleModoCB() {
     const modo = document.querySelector('input[name="modoCB"]:checked').value;
-    const blocoConversao = document.getElementById('blocoConversao');
-    const blocoOperacao = document.getElementById('blocoOperacao');
-    const resBox = document.getElementById('resultadoBases');
-    const passosBox = document.getElementById('passosBases');
-    
-    // Esconder resultados ao trocar de abas
-    resBox.classList.add('hidden');
-    passosBox.classList.add('hidden');
-
-    if(modo === 'conversao') {
-        blocoConversao.classList.remove('hidden');
-        blocoOperacao.classList.add('hidden');
-    } else {
-        blocoConversao.classList.add('hidden');
-        blocoOperacao.classList.remove('hidden');
-    }
+    document.getElementById('blocoConversao').classList.toggle('hidden', modo !== 'conversao');
+    document.getElementById('blocoOperacao').classList.toggle('hidden', modo !== 'operacao');
+    document.getElementById('resultadoBases').classList.add('hidden');
+    document.getElementById('passosBases').classList.add('hidden');
 }
 
-// Realiza o calculo da sessão bases (Conversão ou Operação)
 async function calcularBases() {
     const modo = document.querySelector('input[name="modoCB"]:checked').value;
     const resBox = document.getElementById('resultadoBases');
     const passosBox = document.getElementById('passosBases');
     
-    resBox.classList.add('hidden');
-    passosBox.classList.add('hidden');
-    
     let payload = {};
-
     if (modo === 'conversao') {
         payload = {
             tipo: 'conversao',
@@ -98,20 +86,15 @@ async function calcularBases() {
         });
         const data = await res.json();
         
-        // Verifica se houve a tratativa de erro (ex: subtração não suportada)
         if (data.error) {
-            resBox.innerHTML = `<strong>Aviso:</strong> ${data.error}`;
-            resBox.classList.remove('hidden');
-            return;
+            resBox.innerHTML = `<strong>Erro:</strong> ${data.error}`;
+        } else {
+            resBox.innerHTML = `<strong>Resultado:</strong> ${data.resultado}`;
+            if (data.passos) {
+                passosBox.innerHTML = data.passos;
+                passosBox.classList.remove('hidden');
+            }
         }
-
-        resBox.innerHTML = `<strong>Resultado:</strong> ${data.resultado}`;
         resBox.classList.remove('hidden');
-        
-        // Se a resposta contiver o detalhamento dos passos (apenas na Conversão), ele renderiza
-        if (data.passos) {
-            passosBox.innerHTML = data.passos;
-            passosBox.classList.remove('hidden');
-        }
-    } catch (err) { alert(err.message || "Erro de comunicação no cálculo das Bases."); }
+    } catch (err) { alert("Erro na Calculadora de Bases."); }
 }

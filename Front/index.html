@@ -13,79 +13,72 @@
     </header>
 
     <main class="container">
-        <!-- Euclides Estendido -->
         <div class="card">
             <div class="card-header">
                 <span class="badge">MDC</span>
                 <h2>Euclides Estendido</h2>
             </div>
             <div class="input-group">
-                <input type="number" id="valorA" placeholder="Valor A">
-                <input type="number" id="valorB" placeholder="Valor B">
+                <input type="number" id="valorA" placeholder="Valor A" min="1">
+                <input type="number" id="valorB" placeholder="Valor B" min="1">
                 <button onclick="calcularEuclides()">Calcular</button>
             </div>
             <div id="resultadoEuclides" class="resultado-box hidden"></div>
             <div id="passosEuclides" class="passos-box hidden"></div>
         </div>
 
-        <!-- Crivo de Eratóstenes -->
         <div class="card">
             <div class="card-header">
                 <span class="badge">CE</span>
                 <h2>Crivo de Eratóstenes</h2>
             </div>
             <div class="input-group">
-                <input type="number" id="limiteN" placeholder="Limite n">
+                <input type="number" id="limiteN" placeholder="Limite n (ex: 100)" min="2">
                 <button onclick="calcularCrivo()">Filtrar Primos</button>
             </div>
             <div id="resultadoCrivo" class="resultado-box hidden"></div>
             <div id="passosCrivo" class="passos-box hidden"></div>
         </div>
 
-        <!-- Calculadora de Bases -->
         <div class="card">
             <div class="card-header">
                 <span class="badge">CB</span>
                 <h2>Calculadora de Bases</h2>
             </div>
             
-            <!-- Seleção do Modo -->
-            <div class="input-group" style="flex-direction: row; justify-content: center; margin-bottom: 1rem; gap: 1rem;">
+            <div class="modo-selector">
                 <label><input type="radio" name="modoCB" value="conversao" checked onchange="toggleModoCB()"> Conversão</label>
                 <label><input type="radio" name="modoCB" value="operacao" onchange="toggleModoCB()"> Operação</label>
             </div>
 
-            <!-- Bloco de Conversão -->
             <div id="blocoConversao" class="input-group">
-                <input type="text" id="numConv" placeholder="Número">
-                <label>Base Origem:</label>
+                <input type="text" id="numConv" placeholder="Número (ex: 1010 ou FF)">
+                <label>De:</label>
                 <select id="baseOrigem">
-                    <option value="10">Decimal (10)</option>
-                    <option value="2">Binária (2)</option>
-                    <option value="16">Hexadecimal (16)</option>
+                    <option value="10">Decimal</option>
+                    <option value="2">Binário</option>
+                    <option value="16">Hexadecimal</option>
                 </select>
-                <label>Base Destino:</label>
+                <label>Para:</label>
                 <select id="baseDestino">
-                    <option value="10">Decimal (10)</option>
-                    <option value="2">Binária (2)</option>
-                    <option value="16">Hexadecimal (16)</option>
+                    <option value="10">Decimal</option>
+                    <option value="2">Binário</option>
+                    <option value="16">Hexadecimal</option>
                 </select>
                 <button onclick="calcularBases()">Converter</button>
             </div>
 
-            <!-- Bloco de Operações -->
             <div id="blocoOperacao" class="input-group hidden">
-                <label>Selecione a Base:</label>
                 <select id="baseOpSel">
-                    <option value="10">Decimal (10)</option>
-                    <option value="2">Binária (2)</option>
-                    <option value="16">Hexadecimal (16)</option>
+                    <option value="10">Base 10</option>
+                    <option value="2">Base 2</option>
+                    <option value="16">Base 16</option>
                 </select>
                 <input type="text" id="val1" placeholder="Valor 1">
                 <select id="opSel">
-                    <option value="+">Soma (+)</option>
-                    <option value="-">Subtração (-)</option>
-                    <option value="*">Multiplicação (*)</option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
                 </select>
                 <input type="text" id="val2" placeholder="Valor 2">
                 <button onclick="calcularBases()">Calcular</button>

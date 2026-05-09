@@ -7,42 +7,42 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Define a codificação para UTF-8 explicitamente para evitar erros de acentuação no pipe do Python
+        // Garante que o console aceite caracteres especiais (UTF8)
         Console.OutputEncoding = Encoding.UTF8;
 
         int n;
+        // Tenta ler o número 'n' passado pelo Python
         if (args.Length > 0 && int.TryParse(args[0], out n))
         {
             if (n < 2) {
-                Console.WriteLine("Nao existem numeros primos no intervalo informado.");
+                Console.WriteLine("Nao existem primos menores que 2.");
                 return;
             }
 
+            // Criamos uma 'lista de presença' onde todos começam como verdadeiros
             bool[] ehPrimo = new bool[n + 1];
             for (int i = 2; i <= n; i++) ehPrimo[i] = true;
 
-            Console.WriteLine($"--- Inicio do Crivo para n = {n} ---");
-            Console.WriteLine($"Lista inicial: {string.Join(", ", Enumerable.Range(2, n - 1))}");
-            Console.WriteLine("--------------------------------------");
-
+            Console.WriteLine($"--- Iniciando Crivo ate {n} ---");
+            
+            // Lógica do Crivo: pegamos um número e riscamos todos os seus múltiplos
             for (int p = 2; p * p <= n; p++)
             {
                 if (ehPrimo[p])
                 {
-                    Console.WriteLine($"> O numero {p} e primo. Removendo seus multiplos:");
-                    
+                    Console.WriteLine($"> {p} primo. Riscando multiplos:");
                     for (int i = p * p; i <= n; i += p)
                     {
                         if (ehPrimo[i])
                         {
                             ehPrimo[i] = false;
-                            Console.WriteLine($"  [X] {i} removido (multiplo de {p})");
+                            Console.WriteLine($"  [X] {i} removido.");
                         }
                     }
                 }
             }
 
-            Console.WriteLine("\n--- Processo Finalizado ---");
+            Console.WriteLine("\n--- Fim do Processo ---");
             Console.WriteLine("---FINAL---");
 
             List<int> resultado = new List<int>();
